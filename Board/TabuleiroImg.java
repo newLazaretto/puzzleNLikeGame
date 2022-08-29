@@ -18,7 +18,7 @@ public class TabuleiroImg extends Tabuleiro{
 	public boolean checarAcerto() {
 		return true;
 	}
-	public void movePedrinha() {
+	public void movePedrinha(String comando) {
 		
 	}
 }

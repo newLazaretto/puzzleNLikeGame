@@ -72,7 +72,7 @@ public class TabuleiroChar extends Tabuleiro{
 		return false;
 	}
 	
-	public void movePedrinha() {
+	public void movePedrinha(String comando) {
 		
 	}
 	

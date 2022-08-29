@@ -16,10 +16,10 @@ public static boolean jogar(TabuleiroNum tabuleiro,Jogador jogador){
 		}
 		
 		tabuleiro.printTabuleiro();
-		System.out.println("Insira o nome do jogador: ");
-		String d = scanner.nextLine();
-		tabuleiro.movePedrinha();
-		
+		new KeyListener(tabuleiro);
+		Scanner keyPress = new Scanner(System.in);
+		String comando = keyPress.nextLine();
+		tabuleiro.movePedrinha(comando);
 		return true;
 }
 	
@@ -28,13 +28,13 @@ public static void main(String[] args){
 	boolean running = true;
 	
 	Scanner scanner = new Scanner(System.in);
-
+	
 	System.out.println("Insira o nome do jogador: ");
 	String playerName = scanner.nextLine();
 	
 	System.out.println("Insira a ordem do tabuleiro: ");
 	int ordemTabuleiro = scanner.nextInt();
-	
+
 	TabuleiroNum tabuleiro = new TabuleiroNum(ordemTabuleiro);
 	Jogador jogador = new Jogador(playerName);
 	

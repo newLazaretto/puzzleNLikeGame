@@ -2,6 +2,8 @@ package Board;
 
 import java.util.Random;
 
+import Game.KeyListener;
+
 public class TabuleiroNum extends Tabuleiro{
 
 	private int[] pedrinhas;
@@ -78,8 +80,20 @@ public class TabuleiroNum extends Tabuleiro{
 		//Será criada uma matriz de ordem NxN que mudará a cada movimento do jogador
 		//Se o índice + 1 da matriz for igual ao numero da pedrinha, ele ganha pontos
 		//Se todos as pedrinhas estiverem no lugar correto o jogo é ganho e recomeça
-		public void movePedrinha() {
-			//A fazer
+		public void movePedrinha(String comando) {
+			if (comando == "w") {	
+				for(int i = 1;i<super.getOrdem();i++) {
+					for(int j=0;j<super.getOrdem();j++) {
+							if (this.matrizNum[i][j] == 0) {
+								int tmp = this.matrizNum[i-1][j];
+								this.matrizNum[i-1][j] = 0;
+								this.matrizNum[i][j] = tmp;
+						}
+					}
+				}
 		}
-	
+			if (comando == "d") {
+				
+			}
+	}
 }
