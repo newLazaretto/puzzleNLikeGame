@@ -6,4 +6,19 @@ public class TabuleiroImg extends Tabuleiro{
 		super(ordemTabuleiro);
 	}
 
+	public void setPedrinhas() {
+		
+	}
+	public void criaTabuleiro() {
+		
+	}
+	public void printTabuleiro() {
+		
+	}
+	public boolean checarAcerto() {
+		return true;
+	}
+	public void movePedrinha() {
+		
+	}
 }

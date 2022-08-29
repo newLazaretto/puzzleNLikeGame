@@ -2,11 +2,12 @@ package Game;
 import java.util.Scanner;
 
 import Board.Tabuleiro;
+import Board.TabuleiroNum;
 
 public class Main {
 
 	
-public static boolean jogar(Tabuleiro tabuleiro,Jogador jogador){
+public static boolean jogar(TabuleiroNum tabuleiro,Jogador jogador){
 	
 		Scanner scanner = new Scanner(System.in);
 		
@@ -14,11 +15,11 @@ public static boolean jogar(Tabuleiro tabuleiro,Jogador jogador){
 			return false;
 		}
 		
+		tabuleiro.printTabuleiro();
 		System.out.println("Insira o nome do jogador: ");
 		String d = scanner.nextLine();
-		tabuleiro.setPedrinhas();
-		tabuleiro.criaTabuleiro();
-		tabuleiro.printTabuleiro();
+		tabuleiro.movePedrinha();
+		
 		return true;
 }
 	
@@ -34,8 +35,11 @@ public static void main(String[] args){
 	System.out.println("Insira a ordem do tabuleiro: ");
 	int ordemTabuleiro = scanner.nextInt();
 	
-	Tabuleiro tabuleiro = new Tabuleiro(ordemTabuleiro);
+	TabuleiroNum tabuleiro = new TabuleiroNum(ordemTabuleiro);
 	Jogador jogador = new Jogador(playerName);
+	
+	tabuleiro.setPedrinhas();
+	tabuleiro.criaTabuleiro();
 	
 	while(running) {
 		running = jogar(tabuleiro, jogador);

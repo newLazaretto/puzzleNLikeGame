@@ -5,11 +5,13 @@ import java.util.Random;
 public class TabuleiroChar extends Tabuleiro{
 
 	char[] caracteres;
+	char[][] matrizChar;
 	public TabuleiroChar(int ordemTabuleiro) {
 		super(ordemTabuleiro);
 		caracteres = new char[ordemTabuleiro*ordemTabuleiro];
+		matrizChar = new char[ordemTabuleiro][ordemTabuleiro];
 	}
-	public void setCaracteres() {
+	public void setPedrinhas() {
 		int acumula = 65;
 		for(int i=0;i<caracteres.length;i++) {
 			caracteres[i] = (char) acumula;
@@ -25,4 +27,53 @@ public class TabuleiroChar extends Tabuleiro{
 			caracteres[j] = (char) tmp;
 		}
 	}
+	public void setMatriz(char[] caracteres) {
+		int acumula = 0;
+		for(int i=0;i<super.getOrdem();i++) {
+			for(int j=0;j<super.getOrdem();j++) {
+				this.matrizChar[i][j] = caracteres[(char) acumula];
+				acumula +=1;
+			}
+		}
+	}
+	public void criaTabuleiro() {
+			
+			shufflePedrinhas(caracteres);
+			setMatriz(caracteres);
+		}
+
+	public void printTabuleiro() {
+		for (int i = 0; i<super.getOrdem(); i++) {
+			System.out.print("|");
+			for(int j=0;j<super.getOrdem();j++) {
+				if (matrizChar[i][j] == 0) {
+					System.out.print("   |");
+				}else {
+				System.out.print(" "+matrizChar[i][j]+" |");
+				}
+			}
+			System.out.println("");
+		}
+	}
+	public boolean checarAcerto() {
+		int acumulaPontos = 0;
+		int acumulaChar = 65;
+		for (int i=0;i<super.getOrdem();i++) {
+			for(int j=0;j<super.getOrdem();j++) {
+				if (matrizChar[i][j] == (char) acumulaChar) {
+					acumulaPontos +=1;
+				}
+				acumulaChar ++;
+			}
+		}
+		if (acumulaPontos == 8) {
+			return true;
+		}
+		return false;
+	}
+	
+	public void movePedrinha() {
+		
+	}
+	
 }
