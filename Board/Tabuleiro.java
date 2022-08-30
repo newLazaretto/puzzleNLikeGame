@@ -2,7 +2,7 @@ package Board;
 import java.util.Random;
 
 import Game.Jogador;
-
+//Classe abstrata do tabuleiro, futuramente implementará uma interface.
 public abstract class Tabuleiro {
 	
 	private int ordemTabuleiro;
@@ -19,5 +19,6 @@ public abstract class Tabuleiro {
 	public abstract void printTabuleiro();
 	public abstract boolean checarAcerto();
 	public abstract void movePedrinha(char comando);
+	public abstract void help();
 	
 }

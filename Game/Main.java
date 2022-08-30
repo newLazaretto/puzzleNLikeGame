@@ -17,6 +17,8 @@ public static boolean jogar(TabuleiroNum tabuleiro,Jogador jogador, KeyListener 
 		
 		tabuleiro.printTabuleiro();
 		keyPress.KeyPress(tabuleiro);
+		System.out.println("Próxima iteração?");
+		String next = scanner.nextLine();
 		return true;
 }
 	

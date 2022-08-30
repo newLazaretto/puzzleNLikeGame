@@ -1,7 +1,7 @@
 package Board;
 
 import java.util.Random;
-
+//Tabuleiro com letras do alfabeto, lógica funcionando bem
 public class TabuleiroChar extends Tabuleiro{
 
 	char[] caracteres;
@@ -43,6 +43,8 @@ public class TabuleiroChar extends Tabuleiro{
 		}
 
 	public void printTabuleiro() {
+		//Adição do indicativo de acerto
+		int k = 65;
 		for (int i = 0; i<super.getOrdem(); i++) {
 			System.out.print("|");
 			for(int j=0;j<super.getOrdem();j++) {
@@ -50,8 +52,10 @@ public class TabuleiroChar extends Tabuleiro{
 					System.out.print("   |");
 				}else {
 				System.out.print(" "+matrizChar[i][j]+" |");
+				} if (matrizChar[i][j] == (char) k) {
+					System.out.print("*");
 				}
-			}
+			} k++;
 			System.out.println("");
 		}
 	}
@@ -73,6 +77,9 @@ public class TabuleiroChar extends Tabuleiro{
 	}
 	
 	public void movePedrinha(char comando) {
+		
+	}
+	public void help() {
 		
 	}
 	

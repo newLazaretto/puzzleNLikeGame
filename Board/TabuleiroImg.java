@@ -21,4 +21,7 @@ public class TabuleiroImg extends Tabuleiro{
 	public void movePedrinha(char comando) {
 		
 	}
+	public void help() {
+		
+	}
 }

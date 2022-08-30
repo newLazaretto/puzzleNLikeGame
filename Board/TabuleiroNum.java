@@ -46,6 +46,8 @@ public class TabuleiroNum extends Tabuleiro{
 		setMatriz(pedrinhas);
 	}
 	public void printTabuleiro() {
+		//Adição de um indicativo de que a peça está no lugar correto
+		int k = 1;
 		for (int i = 0; i<super.getOrdem(); i++) {
 			System.out.print("|");
 			for(int j=0;j<super.getOrdem();j++) {
@@ -53,8 +55,10 @@ public class TabuleiroNum extends Tabuleiro{
 					System.out.print("   |");
 				}else {
 				System.out.print(" "+matrizNum[i][j]+" |");
+				} if (matrizNum[i][j] == k) {
+					System.out.print("*");
 				}
-			}
+			} k+=1;
 			System.out.println("");
 		}
 	}
@@ -92,4 +96,7 @@ public class TabuleiroNum extends Tabuleiro{
 				
 			}
 	}
+		public void help() {
+			
+		}
 }
