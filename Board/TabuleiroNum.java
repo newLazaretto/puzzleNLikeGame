@@ -1,9 +1,10 @@
 package Board;
 
 import java.util.Random;
+import java.util.Scanner;
 
 import Game.KeyListener;
-
+//Classe do tabuleiro numérico, lógica funcionando bem, mas comando de usuário incompleto.
 public class TabuleiroNum extends Tabuleiro{
 
 	private int[] pedrinhas;
@@ -55,10 +56,10 @@ public class TabuleiroNum extends Tabuleiro{
 					System.out.print("   |");
 				}else {
 				System.out.print(" "+matrizNum[i][j]+" |");
-				} if (matrizNum[i][j] == k) {
+				} /*if (matrizNum[i][j] == k) {
 					System.out.print("*");
-				}
-			} k+=1;
+				}*/
+			} k++;
 			System.out.println("");
 		}
 	}
@@ -97,6 +98,13 @@ public class TabuleiroNum extends Tabuleiro{
 			}
 	}
 		public void help() {
-			
+			Scanner help = new Scanner(System.in);
+			System.out.println("Em qual numero deseja ajuda?");
+			char ajuda = help.next().charAt(0);
+			for(int i=0;i<pedrinhas.length;i++) {
+				if (ajuda == i+1) {
+					System.out.println("A posição correta para seu caractere é a posição " + i+1);
+				}
+			}
 		}
 }

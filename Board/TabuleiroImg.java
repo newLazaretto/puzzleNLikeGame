@@ -2,6 +2,7 @@ package Board;
 
 public class TabuleiroImg extends Tabuleiro{
 
+	//Adição do path com interface gráfica posteriormente
 	public TabuleiroImg(int ordemTabuleiro) {
 		super(ordemTabuleiro);
 	}

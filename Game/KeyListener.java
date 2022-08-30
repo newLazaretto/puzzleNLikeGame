@@ -4,7 +4,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import Board.Tabuleiro;
-
+//Por enquanto não funciona, mas futuramente irá permitir controle do usuário
 public class KeyListener extends JFrame{
 	
 	public void KeyPress(Tabuleiro tabuleiro) {
@@ -24,6 +24,9 @@ public class KeyListener extends JFrame{
 				}
 				if (codigo == KeyEvent.VK_LEFT) {
 					tabuleiro.movePedrinha('a');
+				}
+				if (codigo == KeyEvent.VK_H) {
+					tabuleiro.help();
 				}
 			}
 		});

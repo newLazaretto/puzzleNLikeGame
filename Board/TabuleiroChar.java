@@ -1,6 +1,9 @@
 package Board;
 
 import java.util.Random;
+import java.util.Scanner;
+
+import Game.KeyListener;
 //Tabuleiro com letras do alfabeto, lógica funcionando bem
 public class TabuleiroChar extends Tabuleiro{
 
@@ -80,7 +83,15 @@ public class TabuleiroChar extends Tabuleiro{
 		
 	}
 	public void help() {
-		
+		int k = 65;
+		Scanner help = new Scanner(System.in);
+		System.out.println("Em qual caractere deseja ajuda?");
+		char ajuda = help.next().charAt(0);
+		for(int i=0;i<caracteres.length;i++) {
+			if (ajuda == (char) k) {
+				System.out.println("A posição correta para seu caractere é a posição " + i+1);
+			}
+		}
 	}
 	
 }

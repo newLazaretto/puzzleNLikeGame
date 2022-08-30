@@ -5,7 +5,7 @@ import Board.Tabuleiro;
 import Board.TabuleiroNum;
 
 public class Main {
-
+//Testes
 	
 public static boolean jogar(TabuleiroNum tabuleiro,Jogador jogador, KeyListener keyPress){
 	
@@ -18,7 +18,8 @@ public static boolean jogar(TabuleiroNum tabuleiro,Jogador jogador, KeyListener 
 		tabuleiro.printTabuleiro();
 		keyPress.KeyPress(tabuleiro);
 		System.out.println("Próxima iteração?");
-		String next = scanner.nextLine();
+		char next = scanner.next().charAt(0);
+		tabuleiro.movePedrinha(next);
 		return true;
 }
 	
