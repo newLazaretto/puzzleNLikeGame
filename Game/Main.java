@@ -7,7 +7,7 @@ import Board.TabuleiroNum;
 public class Main {
 
 	
-public static boolean jogar(TabuleiroNum tabuleiro,Jogador jogador){
+public static boolean jogar(TabuleiroNum tabuleiro,Jogador jogador, KeyListener keyPress){
 	
 		Scanner scanner = new Scanner(System.in);
 		
@@ -16,10 +16,7 @@ public static boolean jogar(TabuleiroNum tabuleiro,Jogador jogador){
 		}
 		
 		tabuleiro.printTabuleiro();
-		new KeyListener(tabuleiro);
-		Scanner keyPress = new Scanner(System.in);
-		String comando = keyPress.nextLine();
-		tabuleiro.movePedrinha(comando);
+		keyPress.KeyPress(tabuleiro);
 		return true;
 }
 	
@@ -28,6 +25,7 @@ public static void main(String[] args){
 	boolean running = true;
 	
 	Scanner scanner = new Scanner(System.in);
+	KeyListener keyPress = new KeyListener();
 	
 	System.out.println("Insira o nome do jogador: ");
 	String playerName = scanner.nextLine();
@@ -42,7 +40,7 @@ public static void main(String[] args){
 	tabuleiro.criaTabuleiro();
 	
 	while(running) {
-		running = jogar(tabuleiro, jogador);
+		running = jogar(tabuleiro, jogador, keyPress);
 		
 	}
 	

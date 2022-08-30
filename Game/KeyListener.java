@@ -7,23 +7,23 @@ import Board.Tabuleiro;
 
 public class KeyListener extends JFrame{
 	
-	public KeyListener(Tabuleiro tabuleiro) {
+	public void KeyPress(Tabuleiro tabuleiro) {
 		
 		addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				int codigo = e.getKeyCode();
 				
 				if (codigo == KeyEvent.VK_UP) {
-					tabuleiro.movePedrinha("w");
+					tabuleiro.movePedrinha('w');
 				}
 				if(codigo == KeyEvent.VK_RIGHT) {
-					tabuleiro.movePedrinha("d");
+					tabuleiro.movePedrinha('d');
 				}
 				if(codigo == KeyEvent.VK_DOWN) {
-					tabuleiro.movePedrinha("s");
+					tabuleiro.movePedrinha('s');
 				}
 				if (codigo == KeyEvent.VK_LEFT) {
-					tabuleiro.movePedrinha("a");
+					tabuleiro.movePedrinha('a');
 				}
 			}
 		});

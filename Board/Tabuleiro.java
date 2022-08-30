@@ -18,6 +18,6 @@ public abstract class Tabuleiro {
 	public abstract void criaTabuleiro();
 	public abstract void printTabuleiro();
 	public abstract boolean checarAcerto();
-	public abstract void movePedrinha(String comando);
+	public abstract void movePedrinha(char comando);
 	
 }

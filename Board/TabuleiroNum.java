@@ -76,12 +76,8 @@ public class TabuleiroNum extends Tabuleiro{
 		return false;
 	}
 	
-	//Controlar a pedrinha numero 0 que será tida como invisível
-		//Será criada uma matriz de ordem NxN que mudará a cada movimento do jogador
-		//Se o índice + 1 da matriz for igual ao numero da pedrinha, ele ganha pontos
-		//Se todos as pedrinhas estiverem no lugar correto o jogo é ganho e recomeça
-		public void movePedrinha(String comando) {
-			if (comando == "w") {	
+		public void movePedrinha(char comando) {
+			if (comando == 'w') {	
 				for(int i = 1;i<super.getOrdem();i++) {
 					for(int j=0;j<super.getOrdem();j++) {
 							if (this.matrizNum[i][j] == 0) {
@@ -92,7 +88,7 @@ public class TabuleiroNum extends Tabuleiro{
 					}
 				}
 		}
-			if (comando == "d") {
+			if (comando == 'd') {
 				
 			}
 	}
