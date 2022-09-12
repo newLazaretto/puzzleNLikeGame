@@ -2,21 +2,23 @@ package Game;
 import java.util.Scanner;
 
 import Board.Tabuleiro;
+import Board.TabuleiroChar;
 import Board.TabuleiroNum;
 
 public class Main {
 //Testes
 	
-public static boolean jogar(TabuleiroNum tabuleiro,Jogador jogador, KeyListener keyPress){
+public static boolean jogar(Tabuleiro tabuleiro,Jogador jogador, int maluco){
 	
 		Scanner scanner = new Scanner(System.in);
 		
+		if (maluco == 1) {
+			tabuleiro.puzzleMaluco();
+		}
+		tabuleiro.printTabuleiro();
 		if (tabuleiro.checarAcerto() == true) {
 			return false;
 		}
-		
-		tabuleiro.printTabuleiro();
-		keyPress.KeyPress(tabuleiro);
 		System.out.println("Próxima iteração?");
 		char next = scanner.next().charAt(0);
 		tabuleiro.movePedrinha(next);
@@ -35,6 +37,9 @@ public static void main(String[] args){
 	
 	System.out.println("Insira a ordem do tabuleiro: ");
 	int ordemTabuleiro = scanner.nextInt();
+	
+	System.out.println("Você deseja entrar com o puzzle-N Maluco? (Pressione 1 caso deseja)");
+	int maluco = scanner.nextInt();
 
 	TabuleiroNum tabuleiro = new TabuleiroNum(ordemTabuleiro);
 	Jogador jogador = new Jogador(playerName);
@@ -43,7 +48,7 @@ public static void main(String[] args){
 	tabuleiro.criaTabuleiro();
 	
 	while(running) {
-		running = jogar(tabuleiro, jogador, keyPress);
+		running = jogar(tabuleiro, jogador, maluco);
 		
 	}
 	

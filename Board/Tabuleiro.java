@@ -21,5 +21,11 @@ public abstract class Tabuleiro {
 	public abstract boolean checarAcerto();
 	public abstract void movePedrinha(char comando);
 	public abstract void help();
+	public void puzzleMaluco() {
+		Random crazy = new Random();
+		if (crazy.nextInt(10) == 0) {
+			criaTabuleiro();
+		}
+	}
 	
 }

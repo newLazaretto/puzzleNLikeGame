@@ -94,7 +94,37 @@ public class TabuleiroNum extends Tabuleiro{
 				}
 		}
 			if (comando == 'd') {
-				
+				for(int i = 0;i<super.getOrdem();i++) {
+					for(int j=1;j>=0;j--) {
+							if (this.matrizNum[i][j] == 0) {
+								int tmp = this.matrizNum[i][j+1];
+								this.matrizNum[i][j+1] = 0;
+								this.matrizNum[i][j] = tmp;
+						}
+					}
+				}
+			}
+			if (comando == 's') {
+				for(int i = 1;i>=0;i--) {
+					for(int j=0;j<super.getOrdem();j++) {
+							if (this.matrizNum[i][j] == 0) {
+								int tmp = this.matrizNum[i+1][j];
+								this.matrizNum[i+1][j] = 0;
+								this.matrizNum[i][j] = tmp;
+						}
+					}
+				}
+			}
+			if(comando == 'a') {
+				for(int i = 0;i<super.getOrdem();i++) {
+					for(int j=1;j<super.getOrdem();j++) {
+							if (this.matrizNum[i][j] == 0) {
+								int tmp = this.matrizNum[i][j-1];
+								this.matrizNum[i][j-1] = 0;
+								this.matrizNum[i][j] = tmp;
+						}
+					}
+				}
 			}
 	}
 		public void help() {
