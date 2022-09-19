@@ -8,27 +8,12 @@ import Board.TabuleiroNum;
 public class Main {
 //Testes
 	
-public static boolean jogar(Tabuleiro tabuleiro,Jogador jogador, int maluco){
-	
-		Scanner scanner = new Scanner(System.in);
-		
-		if (maluco == 1) {
-			tabuleiro.puzzleMaluco();
-		}
-		tabuleiro.printTabuleiro();
-		if (tabuleiro.checarAcerto() == true) {
-			return false;
-		}
-		System.out.println("Próxima iteração?");
-		char next = scanner.next().charAt(0);
-		tabuleiro.movePedrinha(next);
-		return true;
-}
+
 	
 
 public static void main(String[] args){
 	boolean running = true;
-	
+	int maluquice = 0;
 	Scanner scanner = new Scanner(System.in);
 	KeyListener keyPress = new KeyListener();
 	
@@ -40,15 +25,25 @@ public static void main(String[] args){
 	
 	System.out.println("Você deseja entrar com o puzzle-N Maluco? (Pressione 1 caso deseja)");
 	int maluco = scanner.nextInt();
+	
+	if (maluco == 1) {
+		System.out.println("Escolha o nível de maluquice: (1, 2 ou 3)");
+		maluquice = scanner.nextInt();
+	}
 
 	TabuleiroNum tabuleiro = new TabuleiroNum(ordemTabuleiro);
 	Jogador jogador = new Jogador(playerName);
 	
 	tabuleiro.setPedrinhas();
 	tabuleiro.criaTabuleiro();
+	Jogar jogo = new Jogar();
 	
 	while(running) {
-		running = jogar(tabuleiro, jogador, maluco);
+		try {
+			running = jogo.jogar(tabuleiro, jogador, maluco, maluquice);
+		} catch (CheckValorException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	

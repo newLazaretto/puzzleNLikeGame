@@ -3,8 +3,9 @@ package Board;
 import java.util.Random;
 import java.util.Scanner;
 
+import Game.ComandoInvalidoException;
 import Game.KeyListener;
-//Tabuleiro com letras do alfabeto, lógica funcionando bem
+
 public class TabuleiroChar extends Tabuleiro{
 
 	char[] caracteres;
@@ -79,7 +80,11 @@ public class TabuleiroChar extends Tabuleiro{
 		return false;
 	}
 	
-	public void movePedrinha(char comando) {
+	public void movePedrinha(char comando) throws ComandoInvalidoException{
+		if (comando != 'w' && comando != 'a' && comando != 's' && comando != 'd') {
+			ComandoInvalidoException e = new ComandoInvalidoException();
+			throw e;
+		}
 		if (comando == 'w') {	
 			for(int i = 1;i<super.getOrdem();i++) {
 				for(int j=0;j<super.getOrdem();j++) {
