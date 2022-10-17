@@ -4,7 +4,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 import Game.ComandoInvalidoException;
-import Game.KeyListener;
 
 public class TabuleiroChar extends Tabuleiro{
 
@@ -80,11 +79,7 @@ public class TabuleiroChar extends Tabuleiro{
 		return false;
 	}
 	
-	public void movePedrinha(char comando) throws ComandoInvalidoException{
-		if (comando != 'w' && comando != 'a' && comando != 's' && comando != 'd') {
-			ComandoInvalidoException e = new ComandoInvalidoException();
-			throw e;
-		}
+	public void movePedrinha(char comando){
 		if (comando == 'w') {	
 			for(int i = 1;i<super.getOrdem();i++) {
 				for(int j=0;j<super.getOrdem();j++) {
@@ -140,6 +135,9 @@ public class TabuleiroChar extends Tabuleiro{
 				System.out.println("A posição correta para seu caractere é a posição " + i+1);
 			}
 		}
+	}
+	public void returnArray(int[] array) {
+		
 	}
 	
 }

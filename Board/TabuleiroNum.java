@@ -4,7 +4,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 import Game.ComandoInvalidoException;
-import Game.KeyListener;
 //Classe do tabuleiro numérico, lógica funcionando bem, mas comando de usuário incompleto.
 public class TabuleiroNum extends Tabuleiro{
 
@@ -42,6 +41,9 @@ public class TabuleiroNum extends Tabuleiro{
 			}
 		}
 	}
+	public void setPedrinhas(int[][] matriz) {
+		int acumula = 0;
+	}
 	
 	public void criaTabuleiro() {
 		shufflePedrinhas(pedrinhas);
@@ -76,17 +78,13 @@ public class TabuleiroNum extends Tabuleiro{
 				k++;
 			}
 		}
-		if (acumula == 8) {
+		if (acumula == (super.getOrdem() * super.getOrdem()) - 1) {
 			return true;
 		}
 		return false;
 	}
 	
-		public void movePedrinha(char comando) throws ComandoInvalidoException{
-			if (comando != 'w' && comando != 'a' && comando != 's' && comando != 'd') {
-				ComandoInvalidoException e = new ComandoInvalidoException();
-				throw e;
-			}
+		public void movePedrinha(char comando){
 			if (comando == 'w') {	
 				for(int i = 1;i<super.getOrdem();i++) {
 					for(int j=0;j<super.getOrdem();j++) {
@@ -100,7 +98,7 @@ public class TabuleiroNum extends Tabuleiro{
 		}
 			if (comando == 'd') {
 				for(int i = 0;i<super.getOrdem();i++) {
-					for(int j=1;j>=0;j--) {
+					for(int j=super.getOrdem()-2;j>=0;j--) {
 							if (this.matrizNum[i][j] == 0) {
 								int tmp = this.matrizNum[i][j+1];
 								this.matrizNum[i][j+1] = 0;
@@ -110,7 +108,7 @@ public class TabuleiroNum extends Tabuleiro{
 				}
 			}
 			if (comando == 's') {
-				for(int i = 1;i>=0;i--) {
+				for(int i = super.getOrdem()-2;i>=0;i--) {
 					for(int j=0;j<super.getOrdem();j++) {
 							if (this.matrizNum[i][j] == 0) {
 								int tmp = this.matrizNum[i+1][j];
@@ -139,6 +137,15 @@ public class TabuleiroNum extends Tabuleiro{
 			for(int i=0;i<pedrinhas.length;i++) {
 				if (ajuda == i+1) {
 					System.out.println("A posição correta para seu caractere é a posição " + i+1);
+				}
+			}
+		}
+		public void returnArray(int[] array) {
+			int acumula = 0;
+			for (int i=0;i<super.getOrdem();i++) {
+				for(int j = 0;j<super.getOrdem();j++) {
+				array[acumula] = matrizNum[i][j];
+				acumula ++;
 				}
 			}
 		}

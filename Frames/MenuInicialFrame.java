@@ -1,0 +1,99 @@
+package Frames;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.UnsupportedLookAndFeelException;
+
+public class MenuInicialFrame extends JFrame{
+	
+	public MenuInicialFrame() {
+		
+		super("Menu Inicial");
+		try {
+		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+		        if ("Nimbus".equals(info.getName())) {
+		            UIManager.setLookAndFeel(info.getClassName());
+		            break;
+		        }
+		    }
+		} catch (UnsupportedLookAndFeelException e) {
+		    
+		} catch (ClassNotFoundException e) {
+		    
+		} catch (InstantiationException e) {
+		    
+		} catch (IllegalAccessException e) {
+		    
+		}
+		//getContentPane().setBackground(new java.awt.Color(R,G,B));
+		setSize(720,480);
+		setLocation(400,250);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getContentPane().setBackground(new Color(50,50,50));
+		criarMenu();
+		
+		setVisible(true);
+		
+		
+	}
+	
+	private void criarMenu() {
+		
+		
+		JMenu jogar = new JMenu("Jogar");
+		jogar.setMnemonic('J');
+		JMenuItem novoJogo = new JMenuItem(new GameAction(1));
+		novoJogo.setText("Novo Jogo");
+		novoJogo.setMnemonic('N');
+		jogar.add(novoJogo);
+		JMenuItem continuaJogo = new JMenuItem("Continuar");
+		continuaJogo.setMnemonic('C');
+		jogar.add(continuaJogo);
+		JMenuItem ranking = new JMenuItem("Ranking");
+		ranking.setMnemonic('R');
+		jogar.add(ranking);
+		
+		JMenu configuracoes = new JMenu("Configurações");
+		configuracoes.setMnemonic('C');
+		JMenuItem dificuldade = new JMenuItem(new DificuldadeAction());
+		dificuldade.setText("Dificuldade");
+		dificuldade.setMnemonic('D');
+		configuracoes.add(dificuldade);
+		JMenuItem modalidade = new JMenuItem(new ModalidadeAction());
+		modalidade.setText("Modalidade");
+		modalidade.setMnemonic('M');
+		configuracoes.add(modalidade);
+		JMenuItem maluquice = new JMenuItem(new MaluquiceAction());
+		maluquice.setText("Maluquice");
+		maluquice.setMnemonic('M');
+		configuracoes.add(maluquice);
+		
+		JMenu ajuda = new JMenu("Ajuda");
+		ajuda.setMnemonic('A');
+		JMenuItem howToPlay = new JMenuItem(new HowToPlayAction());
+		howToPlay.setText("Como Jogar");
+		howToPlay.setMnemonic('C');
+		ajuda.add(howToPlay);
+		
+		JMenuBar barra = new JMenuBar();
+		setJMenuBar(barra);
+		barra.add(jogar);
+		barra.add(configuracoes);
+		barra.add(ajuda);
+		
+	}
+	
+}
+
+	
+

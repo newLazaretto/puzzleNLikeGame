@@ -21,10 +21,13 @@ public class TabuleiroImg extends Tabuleiro{
 	public boolean checarAcerto() {
 		return true;
 	}
-	public void movePedrinha(char comando) throws ComandoInvalidoException {
+	public void movePedrinha(char comando){
 		
 	}
 	public void help() {
+		
+	}
+	public void returnArray(int[] array) {
 		
 	}
 }

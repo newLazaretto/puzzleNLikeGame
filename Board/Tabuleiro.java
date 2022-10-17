@@ -19,14 +19,12 @@ public abstract class Tabuleiro implements Board{
 	}
 	public abstract void printTabuleiro();
 	public abstract boolean checarAcerto();
-	public abstract void movePedrinha(char comando) throws ComandoInvalidoException;
+	public abstract void movePedrinha(char comando);
 	public abstract void criaTabuleiro();
+	public abstract void returnArray(int[] array);
 	
-	public void puzzleMaluco(int maluquice) throws CheckValorException{
+	public void puzzleMaluco(int maluquice){
 		Random crazy = new Random();
-		if (maluquice != 1 && maluquice != 2 && maluquice != 3) {
-		CheckValorException e = new CheckValorException(maluquice);
-				throw e;}
 		if (maluquice == 1) {
 			if (crazy.nextInt(10) == 0) {
 				criaTabuleiro();
@@ -43,4 +41,5 @@ public abstract class Tabuleiro implements Board{
 		}
 		}
 	}
+	
 }

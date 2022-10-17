@@ -1,51 +1,56 @@
 package Game;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import Board.Tabuleiro;
 import Board.TabuleiroChar;
 import Board.TabuleiroNum;
+import Frames.MenuInicialFrame;
+import Frames.WinFrame;
 
 public class Main {
-//Testes
 	
-
 	
-
-public static void main(String[] args){
+	
+	
+public static void main(String[] args) throws IOException{
+	
+	
+	//int dificuldade = 3;
+	//int maluquice = 0;
+	MenuInicialFrame menu = new MenuInicialFrame();
 	boolean running = true;
-	int maluquice = 0;
 	Scanner scanner = new Scanner(System.in);
-	KeyListener keyPress = new KeyListener();
 	
-	System.out.println("Insira o nome do jogador: ");
+	
+/*	System.out.println("Insira o nome do jogador: ");
 	String playerName = scanner.nextLine();
 	
-	System.out.println("Insira a ordem do tabuleiro: ");
-	int ordemTabuleiro = scanner.nextInt();
+	Tabuleiro tabuleiro = new TabuleiroNum(dificuldade + 1);
 	
-	System.out.println("Você deseja entrar com o puzzle-N Maluco? (Pressione 1 caso deseja)");
-	int maluco = scanner.nextInt();
-	
-	if (maluco == 1) {
-		System.out.println("Escolha o nível de maluquice: (1, 2 ou 3)");
-		maluquice = scanner.nextInt();
-	}
-
-	TabuleiroNum tabuleiro = new TabuleiroNum(ordemTabuleiro);
 	Jogador jogador = new Jogador(playerName);
 	
 	tabuleiro.setPedrinhas();
 	tabuleiro.criaTabuleiro();
 	Jogar jogo = new Jogar();
 	
+	
 	while(running) {
 		try {
-			running = jogo.jogar(tabuleiro, jogador, maluco, maluquice);
+			running = jogo.jogar(tabuleiro, jogador, maluquice);
 		} catch (CheckValorException e) {
 			e.printStackTrace();
 		}
 		
-	}
+	}*/
 	
 }
 

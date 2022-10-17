@@ -9,9 +9,9 @@ static //Melhor separação do método para iniciar o jogo futuramente
 	
 	Scanner scanner = new Scanner(System.in);
 	
-	public boolean jogar(Tabuleiro tabuleiro,Jogador jogador, int maluco, int maluquice) throws CheckValorException{
+	public boolean jogar(Tabuleiro tabuleiro,Jogador jogador, int maluquice) throws CheckValorException{
 		
-		if (maluco == 1) {
+		if (maluquice > 0) {
 			tabuleiro.puzzleMaluco(maluquice);
 		}
 		tabuleiro.printTabuleiro();
@@ -19,12 +19,10 @@ static //Melhor separação do método para iniciar o jogo futuramente
 			return false;
 		}
 		System.out.println("Próxima iteração?");
-		char next = scanner.next().charAt(0);
-		try {
-			tabuleiro.movePedrinha(next);
-		} catch (ComandoInvalidoException e) {
-			e.printStackTrace();
-		}
+		char next = scanner.next().charAt(0);	
+		tabuleiro.movePedrinha(next);
+			
+		
 		return true;
 }
 }
