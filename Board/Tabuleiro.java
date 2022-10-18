@@ -22,6 +22,7 @@ public abstract class Tabuleiro implements Board{
 	public abstract void movePedrinha(char comando);
 	public abstract void criaTabuleiro();
 	public abstract void returnArray(int[] array);
+	public abstract void setArray(int[] array);
 	
 	public void puzzleMaluco(int maluquice){
 		Random crazy = new Random();

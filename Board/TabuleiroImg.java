@@ -30,4 +30,7 @@ public class TabuleiroImg extends Tabuleiro{
 	public void returnArray(int[] array) {
 		
 	}
+	public void setArray(int array[]) {
+		
+	}
 }

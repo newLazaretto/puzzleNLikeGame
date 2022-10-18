@@ -38,12 +38,14 @@ public class DificuldadeFrame extends JFrame{
 		setLocation(610,445);
 		setLayout(new FlowLayout());
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		
+		getContentPane().setBackground(new Color(224,235,106));
+		setBackground(new Color(0,0,0));
 		JPanel p = new JPanel();
-		p.setBackground(Color.BLUE);
+		p.setBackground(new Color(224,235,106));
 		add(p);
 		JButton facil = new JButton("Fácil 2x2");
-		facil.setBackground(Color.YELLOW);
+		facil.setBackground(new Color(60,182,192));
+		facil.setForeground(new Color(0,0,0));
 		facil.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -54,7 +56,8 @@ public class DificuldadeFrame extends JFrame{
 		});
 		p.add(facil);
 		JButton medio = new JButton("Médio 3x3");
-		medio.setBackground(Color.YELLOW);
+		medio.setBackground(new Color(60,182,192));
+		medio.setForeground(new Color(0,0,0));
 		medio.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -65,7 +68,8 @@ public class DificuldadeFrame extends JFrame{
 		});
 		p.add(medio);
 		JButton dificil = new JButton("Difícil 4x4");
-		dificil.setBackground(Color.YELLOW);
+		dificil.setBackground(new Color(60,182,192));
+		dificil.setForeground(new Color(0,0,0));
 		dificil.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {

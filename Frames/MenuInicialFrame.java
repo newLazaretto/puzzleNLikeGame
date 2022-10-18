@@ -2,10 +2,17 @@ package Frames;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -16,9 +23,19 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class MenuInicialFrame extends JFrame{
 	
+	
+	
 	public MenuInicialFrame() {
+		super("Puzzle-Shuffle");
 		
-		super("Menu Inicial");
+		BufferedImage img = null;	
+		try {
+			img = ImageIO.read(new File("wallpaper.png"));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
+		
 		try {
 		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 		        if ("Nimbus".equals(info.getName())) {
@@ -36,13 +53,21 @@ public class MenuInicialFrame extends JFrame{
 		    
 		}
 		//getContentPane().setBackground(new java.awt.Color(R,G,B));
-		setSize(720,480);
-		setLocation(400,250);
+		JLabel label = new JLabel();
+		setSize(614,661);
+		setLocation(500,100);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setBackground(new Color(50,50,50));
+		setResizable(false);
+		
+		Image dimg = img;
+		ImageIcon imageIcon = new ImageIcon(dimg);
+		label.setIcon(imageIcon);
+		
 		criarMenu();
 		
 		setVisible(true);
+		add(label);
 		
 		
 	}
@@ -56,7 +81,8 @@ public class MenuInicialFrame extends JFrame{
 		novoJogo.setText("Novo Jogo");
 		novoJogo.setMnemonic('N');
 		jogar.add(novoJogo);
-		JMenuItem continuaJogo = new JMenuItem("Continuar");
+		JMenuItem continuaJogo = new JMenuItem(new GameAction(2));
+		continuaJogo.setText("Continuar");
 		continuaJogo.setMnemonic('C');
 		jogar.add(continuaJogo);
 		JMenuItem ranking = new JMenuItem("Ranking");

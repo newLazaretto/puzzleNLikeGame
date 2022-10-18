@@ -149,4 +149,13 @@ public class TabuleiroNum extends Tabuleiro{
 				}
 			}
 		}
+		public void setArray(int array[]) {
+			int acumula = 0;
+			for(int i = 0; i< super.getOrdem(); i++) {
+				for(int j = 0; j< super.getOrdem(); j++) {
+					matrizNum[i][j] = array[acumula];
+					acumula++;
+				}
+			}
+		}
 }

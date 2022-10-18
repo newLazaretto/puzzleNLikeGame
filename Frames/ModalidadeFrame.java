@@ -35,13 +35,15 @@ public class ModalidadeFrame extends JFrame{
 		setLocation(610,445);
 		setLayout(new FlowLayout());
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		getContentPane().setBackground(new Color(224,235,106));
 		
 		JPanel p = new JPanel();
-		p.setBackground(Color.BLUE);
+		p.setBackground(new Color(224,235,106));
 		add(p);
 		
 		JButton num = new JButton("Numeros");
-		num.setBackground(Color.YELLOW);
+		num.setBackground(new Color(60,182,192));
+		num.setForeground(new Color(0,0,0));
 		num.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -52,7 +54,8 @@ public class ModalidadeFrame extends JFrame{
 		});
 		p.add(num);
 		JButton carac = new JButton("Caracteres");
-		carac.setBackground(Color.YELLOW);
+		carac.setBackground(new Color(60,182,192));
+		carac.setForeground(new Color(0,0,0));
 		carac.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -63,7 +66,8 @@ public class ModalidadeFrame extends JFrame{
 		});
 		p.add(carac);
 		JButton img = new JButton("Imagens");
-		img.setBackground(Color.YELLOW);
+		img.setBackground(new Color(60,182,192));
+		img.setForeground(new Color(0,0,0));
 		img.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {

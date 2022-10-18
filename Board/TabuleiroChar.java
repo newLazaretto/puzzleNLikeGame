@@ -139,5 +139,7 @@ public class TabuleiroChar extends Tabuleiro{
 	public void returnArray(int[] array) {
 		
 	}
-	
+	public void setArray(int array[]) {
+		
+	}
 }

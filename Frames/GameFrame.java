@@ -3,14 +3,22 @@ package Frames;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -31,10 +39,12 @@ public class GameFrame extends JFrame implements ActionListener{
 	static java.io.File arquivoDificuldade = new java.io.File(diretorio, "arq_dif.txt");
 	static java.io.File arquivoMaluquice = new java.io.File(diretorio, "arq_mal.txt");
 	static java.io.File arquivoModalidade = new java.io.File(diretorio, "arq_mod.txt");
+	static java.io.File arquivoSave = new java.io.File(diretorio, "savefile.txt");
 	static int[] arrayDif = new int[1];
 	static int[] arrayMal = new int[1];
 	static int[] arrayMod = new int[1];
 	int[] array;
+	char[] charArray;
 	int dificuldade;
 	int maluquice;
 	int modalidade;
@@ -42,17 +52,19 @@ public class GameFrame extends JFrame implements ActionListener{
 	JButton[] slots;
 	JPanel buttonPanel = new JPanel();
 	JPanel optionsPanel = new JPanel();
-	JLabel timerText = new JLabel();
+	JButton salvar = new JButton();
+	JButton ajuda = new JButton();
 
 	public GameFrame(int jogo) {
+		
 		this.jogo = jogo;
+		
 		arrayDif = readFiles(arquivoDificuldade);
 		dificuldade = arrayDif[0];
 		arrayMal = readFiles(arquivoMaluquice);
 		maluquice = arrayMal[0];
 		arrayMod = readFiles(arquivoModalidade);
 		modalidade = arrayMod[0];
-		this.array = new int[(dificuldade + 1)*(dificuldade + 1)];
 		
 		if (modalidade == 1){
 			tabuleiro = new TabuleiroNum(dificuldade + 1);
@@ -63,20 +75,22 @@ public class GameFrame extends JFrame implements ActionListener{
 		if (modalidade == 3) {
 			tabuleiro = new TabuleiroImg(dificuldade + 1);
 		}
-		
+		this.array = new int[(dificuldade + 1)*(dificuldade + 1)];
 		slots = new JButton[tabuleiro.getOrdem() * tabuleiro.getOrdem()];
 		
-		System.out.println(dificuldade);
-		System.out.println(maluquice);
-		System.out.println(modalidade);
-		
-		
+		if (jogo == 1) {
 		tabuleiro.setPedrinhas();
 		tabuleiro.criaTabuleiro();
 		tabuleiro.returnArray(array);
-		
-		System.out.println(Arrays.toString(array));
-		
+		}
+		if(jogo == 2) {
+			
+			array = readFiles(arquivoSave);
+			tabuleiro.setArray(array);
+		}
+		for(int i = 0;i<array.length;i++) {
+			System.out.println(array[i]);
+		}
 		setTitle("Puzzle-Shuffle");
 		
 		try {
@@ -100,14 +114,15 @@ public class GameFrame extends JFrame implements ActionListener{
 		setLocation(400,250);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setBackground(new Color(50,50,50));
-		setLayout(new BorderLayout());
 		
-		optionsPanel.setLayout(new BorderLayout());
-		optionsPanel.setBackground(new Color(150,150,150));
-		optionsPanel.setBounds(360,0,100,100);
+		Font f = new Font("Impact", Font.BOLD,40);
 		
-
-		
+		salvar.setText("Salvar");
+		salvar.setBackground(new Color(224,235,106));
+		salvar.addActionListener(this);
+		ajuda.setText("Ajuda");
+		ajuda.setBackground(new Color(224,235,106));
+			
 		
 		for(int i=0;i<tabuleiro.getOrdem() * tabuleiro.getOrdem();i++) {
 			slots[i] = new JButton();
@@ -117,15 +132,21 @@ public class GameFrame extends JFrame implements ActionListener{
 		}
 		
 		buttonPanel.setLayout(new GridLayout(tabuleiro.getOrdem(),tabuleiro.getOrdem()));
+		buttonPanel.setBackground(new Color(60,182,192));
 		
-		add(optionsPanel);
-		add(buttonPanel);	
+		add(optionsPanel,BorderLayout.PAGE_END);
+		add(buttonPanel,BorderLayout.CENTER);	
+		optionsPanel.setBackground(new Color(60,182,192));
+		optionsPanel.add(salvar,BorderLayout.EAST);
+		optionsPanel.add(ajuda,BorderLayout.WEST);
 		
 		for(int i = 0;i<tabuleiro.getOrdem()*tabuleiro.getOrdem();i++) {
 			slots[i].setText(String.valueOf(array[i]));
 			if (array[i] == 0) {
 				slots[i].setVisible(false);
 			}
+			slots[i].setBackground(new Color(224,235,106));
+			slots[i].setFont(f);
 		}
 		setVisible(true);
 		
@@ -153,6 +174,37 @@ public class GameFrame extends JFrame implements ActionListener{
 			return null;
 		}
 		
+	}
+
+	private static void escreverNum(int[] array){				
+		try {
+			FileWriter fileWriter = new FileWriter(arquivoSave, false);
+			PrintWriter printWriter = new PrintWriter(fileWriter);
+			for(int i = 0; i< array.length; i++) {
+			printWriter.print(array[i]);
+			printWriter.print(" ");
+			printWriter.flush();
+			}
+			printWriter.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}							
+	}
+	private static void escreverChar(char[] array) {
+		try {
+			FileWriter fileWriter = new FileWriter(arquivoSave, false);
+			PrintWriter printWriter = new PrintWriter(fileWriter);
+			for(int i = 0; i< array.length; i++) {
+			printWriter.print(array[i]);
+			printWriter.print(" ");
+			printWriter.flush();
+			}
+			printWriter.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
 	}
 	
 	
@@ -199,10 +251,10 @@ public class GameFrame extends JFrame implements ActionListener{
 			}
 			
 			if(array[i] == i+1) {
-				slots[i].setBackground(new Color(0,150,0));
+				slots[i].setBackground(new Color(110,255,125));
 			}
 			else {
-				slots[i].setBackground(new Color(0,0,0));
+				slots[i].setBackground(new Color(224,235,106));
 			}
 			
 			if(tabuleiro.checarAcerto()) {
@@ -226,6 +278,14 @@ public class GameFrame extends JFrame implements ActionListener{
 				}
 				
 			}
+		}
+		if(e.getSource() == salvar) {
+			if(modalidade == 1) {
+			escreverNum(array);}
+			else if(modalidade == 2) {
+			escreverChar(charArray);
+			}
+			JOptionPane.showMessageDialog(null, "O jogo foi salvo!");
 		}
 		
 	}

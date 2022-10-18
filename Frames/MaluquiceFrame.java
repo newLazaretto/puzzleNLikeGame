@@ -37,13 +37,15 @@ public class MaluquiceFrame extends JFrame{
 		setLocation(610,445);
 		setLayout(new FlowLayout());
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		getContentPane().setBackground(new Color(224,235,106));
 		
 		JPanel p = new JPanel();
-		p.setBackground(Color.BLUE);
+		p.setBackground(new Color(224,235,106));
 		add(p);
 		
 		JButton zero = new JButton("0");
-		zero.setBackground(Color.YELLOW);
+		zero.setBackground(new Color(60,182,192));
+		zero.setForeground(new Color(0,0,0));
 		zero.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -55,7 +57,8 @@ public class MaluquiceFrame extends JFrame{
 		});
 		p.add(zero);
 		JButton one = new JButton("1");
-		one.setBackground(Color.YELLOW);
+		one.setBackground(new Color(60,182,192));
+		one.setForeground(new Color(0,0,0));
 		one.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -66,7 +69,8 @@ public class MaluquiceFrame extends JFrame{
 		});
 		p.add(one);
 		JButton two = new JButton("2");
-		two.setBackground(Color.YELLOW);
+		two.setBackground(new Color(60,182,192));
+		two.setForeground(new Color(0,0,0));
 		two.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -77,7 +81,8 @@ public class MaluquiceFrame extends JFrame{
 		});
 		p.add(two);
 		JButton three = new JButton("3");
-		three.setBackground(Color.YELLOW);
+		three.setBackground(new Color(60,182,192));
+		three.setForeground(new Color(0,0,0));
 		three.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
